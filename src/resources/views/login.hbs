@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+        <h1 class="text-center mt-5">Login</h1>
+        <h2 class="text-center mb-4">Chuẩn đoán bệnh ngoài da</h2>
+
+        {{#if success}}
+        <div class="alert alert-success" role="alert">
+          {{success}}
+          <p><a href="home">Back to HomePage</a></p>
+        </div>
+        {{/if}}
+
+        {{#if error}}
+        <div class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
+        {{/if}}
+
+        <form action="/auth/login" method="POST" id="user" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+            <div class="invalid-feedback">
+              Vui lòng nhập địa chỉ email hợp lệ.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            <div class="invalid-feedback">
+              Vui lòng nhập mật khẩu.
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+          </div>
+        </form>
+        <div class="text-center mt-3">
+          <a href="/auth/signup">Chưa có tài khoản? Đăng ký ngay!</a>
+        </div>
+        <div class="btn-toolbar justify-content-center mt-3" role="toolbar">
+          <!-- Nút đăng nhập bằng Google -->
+          <a href="/auth/google"><button class="btn btn-warning me-2">Đăng nhập bằng Google</button></a>
+          <!-- Nút đăng nhập bằng Facebook -->
+          <a href="/auth/facebook"><button class="btn btn-secondary">Đăng nhập bằng Facebook</button></a>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $("form#user").submit(function(event) {
+      event.preventDefault();
+      $.ajax({
+        url: "/auth/login",
+        method: "POST",
+        data: $(this).serialize(),
+        success: function(response) {
+          if (response.success) {
+            $("#success-alert").text(response.success).show();
+            $("#error-alert").hide();
+          } else if (response.error) {
+            $("#error-alert").text(response.error).show();
+            $("#success-alert").hide();
+          }
+        }
+      });
+    });
+  });
+</script>
