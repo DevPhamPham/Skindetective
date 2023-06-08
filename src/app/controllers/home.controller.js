@@ -1,6 +1,8 @@
 class HomeController {
   renderHome(req, res) {
-    res.render("home");
+    // Kiểm tra trạng thái đăng nhập
+    const loggedIn = req.isAuthenticated();
+    return res.render("home",{loggedIn:loggedIn});
   }
 }
 

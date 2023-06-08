@@ -8,7 +8,8 @@ class UploadController {
     if(!req.session.passport.user){
       res.redirect("/");
     }
-    const imageDir = path.join(__dirname, '../../../public/images/ImageFromUser');
+    let userId = req.user.id.toString();
+    const imageDir = path.join(__dirname, `../../../public/images/ImageFromUser/${userId}`);
     try {
       await fs.access(imageDir);
       const files = await fs.readdir(imageDir);
@@ -27,11 +28,13 @@ class UploadController {
     let oldPath, newPath;
     form.parse(req, (err, fields, files) => {
       if (err) return res.status(500).send(err.message);
+      // console.log(files)
       oldPath = files.myImage[0].path;
       newPath = path.join(
         __dirname,
         "../../../public/images",
         "ImageFromUser",
+        userId,
         Date.now() + "_" + files.myImage[0].originalFilename
       );
 

@@ -6,7 +6,8 @@ const Submission = require("../models/Submission");
 class PredictController {
   async predict(req, res) {
     performance.mark('start');
-    const imagePath = path.resolve(__dirname, '../../../public/images/ImageFromUser/');
+    let userId = req.user.id.toString();
+    const imagePath = path.resolve(__dirname, `../../../public/images/ImageFromUser/${userId}`);
     let imageFiles;
   
     try {
@@ -63,7 +64,7 @@ class PredictController {
         const Top5Data = response.data.result[0]
         .map((value, index) => [value, index])
         .sort((a, b) => b[0] - a[0])
-        .slice(0, 5);
+        .slice(0, 6);
         const top5Layers = Top5Data.map(data => ({name: dataLayers[data[1]].name, predict: data[0]}))
         console.log(top5Layers);
 
@@ -93,8 +94,8 @@ class PredictController {
             // Lấy thông tin thời gian xử lý
             const measurements = performance.getEntriesByName('duration');
             console.log(`Thời gian xử lý: ${measurements[0].duration}ms`);
-            performance.clearMarks();
-            performance.clearMeasures();
+            // performance.clearMarks();
+            // performance.clearMeasures();
 
           res.redirect('/');
         });
