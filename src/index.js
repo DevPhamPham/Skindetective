@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const { engine } = require("express-handlebars");
 const session = require("express-session");
 const passport = require("passport");
+const cors = require("cors");
 
 const app = express();
 const port = 8080;
@@ -19,7 +20,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../public")));
-
+//cors
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 // Register middleware session and passport
 app.use(
   session({

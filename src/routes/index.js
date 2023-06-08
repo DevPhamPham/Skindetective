@@ -1,4 +1,4 @@
-const predictRoute = require("./main/predict.route");
+// const predictRoute = require("./main/predict.route");
 // const newsRoute = require("./main/news.route");
 // const historyRoute = require("./main/history.route");
 const profileRoute = require("./main/profile.route");
@@ -12,12 +12,12 @@ const router = (app) => {
   //connect Mongo
   connect.connect();
 
-  app.use(/^\/(home)?$/, homeRoute);
   app.use("/auth", authRoute);
+  app.use(/^\/(home)?$/, homeRoute);
 
 
   //predict page
-  app.use("/predict",isAuthenticated, predictRoute);
+  // app.use("/predict",isAuthenticated, predictRoute);
 
   //upload page
   app.use("/upload",isAuthenticated, uploadRoute);

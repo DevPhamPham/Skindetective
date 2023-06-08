@@ -23,7 +23,7 @@ class UploadController {
         console.log(err);
       }
     }
-    
+
     const form = new multiparty.Form();
     let oldPath, newPath;
     form.parse(req, (err, fields, files) => {
@@ -38,15 +38,20 @@ class UploadController {
         Date.now() + "_" + files.myImage[0].originalFilename
       );
 
-      mv(oldPath, newPath, (err) => {
+      mv(oldPath, newPath,async (err) => {
         if (err) {
           console.log(err);
           res.json({ success: false, msg: "Gửi ảnh không thành công." });
         } else {
-            res.redirect("/predict");
+          console.log("Gui anh thanh cong")
+          const predictController = require("../../app/controllers/predict.controller");
+          let results = await predictController.predict(req,res) || "Loi"
+          res.json({results});
+          return;
         }
       });
     });
+
   }
 }
 
