@@ -47,7 +47,7 @@
             <ul>
               <li class="non_anonymous">
                 <div class="dropdown">
-                  <button class="avatar"><span style="font-family:'Space Grotesk', sans-serif"> Phạm Duy Khoa </span><i class="fa-solid fa-chevron-down"></i></button>
+                  <button class="avatar"><span style="font-family:'Space Grotesk', sans-serif"> {{username}} </span><i class="fa-solid fa-chevron-down"></i></button>
                   <div class="dropdown-content">
                     <a href="/profile">My Profile</a>
                     <a href="/auth/logout">Log Out</a>
@@ -169,6 +169,8 @@
 
             <div class="get_started py-4 border_with_padding" style="padding:0 10%;">
               <button class="btn py-2" style="background-color:black;border: 1px solid"><a href="#imageInput" style="font-weight: bold;text-decoration: none;color: #fff;padding: 5px;">Get Started</a></button>
+              
+              
               <form style="display:none" id="imageInput" action="/upload" enctype="multipart/form-data" method="POST">
                 <div class="d-flex flex-wrap align-items-center justify-content-around">
 
@@ -219,6 +221,8 @@
                   </div>
                 </div>
               </form>
+
+
             </div>
 
             <div class="component_home py-4 d-flex justify-content-around" style="padding: 0 10%">

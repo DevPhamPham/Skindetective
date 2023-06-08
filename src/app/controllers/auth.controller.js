@@ -39,7 +39,8 @@ class AuthController {
             if (user) return done(null, user);
             const newUser = new User({
               email: profile.emails[0].value,
-              password: "google",
+              name: profile.displayName, // Thêm trường name với giá trị displayName trong đối tượng profile
+              password: profile.id,
             });
             newUser.save((err) => {
               if (err) return done(err);
@@ -64,7 +65,8 @@ class AuthController {
             if (user) return done(null, user);
             const newUser = new User({
               email: profile.emails[0].value,
-              password: "facebook",
+              password: profile.id,
+              name: profile.name.givenName + ' ' + profile.name.familyName,
             });
             newUser.save((err) => {
               if (err) return done(err);
