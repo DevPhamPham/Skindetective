@@ -11,6 +11,12 @@
 <link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<style>
+  *{
+    scroll-behavior: smooth;
+    {{!-- overflow: hidden; --}}
+  }
+</style>
 
 <div class="w-100" style="position:absolute">
   <div class="header" style="position: fixed;z-index:9999;height: 126px; width: 100%;background-color: rgba(255, 255, 255, 0.3);backdrop-filter: blur(2px);">
@@ -160,16 +166,15 @@
   </div>
 
   <div class="page" style="height: auto;">
-    <div class="section1 fade-element" style="display: flex; align-items: flex-end;height:100vh">
-      <div class="container" style="height: calc(100vh - 126px);">
+    <div class="section1 fade-element" style="display: flex; align-items: flex-end;min-height:100vh">
+      <div class="container" style="height: auto;">
         <div class="row h-100" >
-          <div class="col-6 px-0 pb-5" style="border-radius:10px;padding-top:55px;background-color:rgba(250, 235, 215, 0)">
+          <div class="col-lg-6 px-0 pb-5" style="border-radius:10px;padding-top:55px;background-color:rgba(250, 235, 215, 0)">
             <div class="title_banner" style="padding:0 10%;font-size: 50px; text-align: left; font-family: 'Space Grotesk', sans-serif;">Chẩn đoán. Gợi ý. Chọn lọc</div>
             <div class="intro_banner py-4" style="padding:0 10%;font-size:20px;font-family: 'Proxima Nova', sans-serif;text-align: left">Skin Detective - Trợ lý chẩn đoán và gợi ý bệnh về da cho bạn</div>
 
             <div class="get_started py-4 border_with_padding" style="padding:0 10%;">
-              <button class="btn py-2" style="background-color:black;border: 1px solid"><a href="#imageInput" style="font-weight: bold;text-decoration: none;color: #fff;padding: 5px;">Get Started</a></button>
-              
+              <button class="btn py-2" style="background-color:black;border: 1px solid"><a href="#" style="font-weight: bold;text-decoration: none;color: #fff;padding: 5px;">Get Started</a></button>
               
               <form style="display:none" id="imageInput" action="/upload" enctype="multipart/form-data" method="POST">
                 <div class="d-flex flex-wrap align-items-center justify-content-around">
@@ -222,7 +227,6 @@
                 </div>
               </form>
 
-
             </div>
 
             <div class="component_home py-4 d-flex justify-content-around" style="padding: 0 10%">
@@ -239,37 +243,112 @@
               }
             </style>
           </div>
-          <div class="col-6" style=" position: relative;">
+          <div class="col-lg-6" style=" position: relative;">
               <img src="./assets/images/home/banner.png" alt="" style="position: absolute; top: 0; left: 0; height: 100%; object-fit: cover;">
           </div>
         </div>
       </div>
     </div>
 
-  <div class="section2"></div>
+    <div class="section2 fade-element" style="height: 100vh">
+      <div class="curved-box"></div>
+      <hr style="color:white;opacity:1;margin:0">
+      <div class="wrap-container d-flex flex-wrap align-items-center justify-content-around" style="height: calc(100vh - 126px);">
+        <div class="container h-50 row">
+          <div class="label col-6 text-center d-flex align-items-center">
+            <span style="width:100%; font-size: 38px; font-family:'Space Grotesk', sans-serif;">Kết quả chuẩn đoán cao nhất</span>
+          </div>
+          <div class="result col-6 text-center d-flex align-items-center">
+            <span style="font-family:'Proxima Nova', sans-serif; font-size:22px; width:100%;">Kiểm tra kết quả ở đây</span>
+            <button class="btn py-2 btn-dark" style="backdrop-filter: blur(2px);border: none"><a href="#" style="font-weight: bold;text-decoration: none;color: #fff;padding: 5px;">Bắt đầu kiểm tra</a></button>
+          </div>
+        </div>
+        <div class="container h-50 row">
+          <div class="label col-6 text-center d-flex align-items-center">
+            <span style="width:100%; font-size: 38px; font-family:'Space Grotesk', sans-serif;">Gợi ý 5 bệnh liên quan<br>(từ cao đến thấp)</span>
+          </div>
+          <div class="result_recommence col-6 text-center d-flex flex-wrap align-items-center">
+            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 1</span>
+            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 2</span>
+            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 3</span>
+            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 4</span>
+            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 5</span>
+          </div>
+        </div>
+      </div>
+      <style>
+        .section2{
+          background: linear-gradient(to bottom right, #445cbb, #42abf0);
+          color: #ffffff;
+        }
+        .curved-box {
+          width: 100%;
+          height: 126px;
+          background: #fff;
+          border-radius: 0 0 0 100% ;
+        }
+        .result button:hover{
+          background-color: #42aaf0 !important;
+        }
+        .result button:hover a{
+          color: #000 !important;
+        }
+      </style>
+    </div>
+
+    <div class="section">
+
+    </div>
 
   </div>
 </div>
 
+<div id="progress" style="display:none; background-color: #8585855d;position: fixed; top: 0; left: 0; right: 0;bottom:0;z-index: 9999999999;">
+  <div id="progressBar" class="d-flex align-items-center text-center"><span style="position: relative; top:60vh; width: 100vw;color: #ff0000;font-size: 38px;font-family:'Space Grotesk', sans-serif;">Đang chẩn đoán</span></div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
 <script>
-$(function() {
-  $("#imageInput").submit(function(event) {
-    event.preventDefault();
-    var formData = new FormData(this);
-    $.ajax({
-      url: "/upload",
-      method: "POST",
-      data: formData,
-      contentType: false,
-      processData: false,
-      success: function(response) {
-        console.log(response);
-      },
-      error: function(err){
-        console.log(err);
-      }
+ $(function() {
+    $("#imageInput").submit(function(event) {
+      event.preventDefault();
+
+      // Tạo đối tượng spinner
+      var spinner = new Spinner().spin();
+      $("#progress").show()
+      $("#progressBar").append(spinner.el);
+
+      var formData = new FormData(this);
+      $.ajax({
+        url: "/upload",
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          // Ẩn spinner khi nhận được phản hồi
+          {{!-- console.log(response); --}}
+          $(".result span").html(`Bệnh <b ">${response.results[0].name}</b> là bệnh được gợi ý là có khả năng xảy ra nhất.`);
+          $(".result").find("button").remove();
+          let result_recommence = "";
+          for (let i = 1; i < response.results.length; i++) {
+            result_recommence += `<span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh <b ">${response.results[i].name}</b></span>`
+          }
+          $(".result_recommence").html(result_recommence);
+
+          $('html, body').animate({
+            scrollTop: $('.result').offset().top
+          }, 300);
+          $("#progress").hide()
+          spinner.stop();
+        },
+        error: function(err){
+          // Ẩn spinner nếu xảy ra lỗi
+          spinner.stop();
+          console.log(err);
+        }
+      });
     });
   });
-});
 </script>

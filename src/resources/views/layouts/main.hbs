@@ -44,27 +44,39 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var fadeElement = document.querySelector(".fade-element");
 
             function handleFade() {
-                if (fadeElement == null) return;
-                var elementPosition = fadeElement.getBoundingClientRect().top;
-                var windowHeight = window.innerHeight;
-
-                if (elementPosition < windowHeight) {
-                fadeElement.classList.add("fade-in");
-                window.removeEventListener("scroll", handleFade);
+                var fadeElement = document.querySelectorAll(".fade-element");
+                var isElementVisible = false;
+                if (isElementVisible) return;
+                for (var i = 0; i < fadeElement.length; i++) {
+                    if (fadeElement[i] == null) return;
+                    const elementPosition = fadeElement[i].getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    //console.log(elementPosition+300)
+                    //console.log(windowHeight)
+                    if (elementPosition+300 < windowHeight) {
+                        fadeElement[i].classList.add("fade-in");
+                        isElementVisible = true;
+                    }else{
+                        fadeElement[i].classList.remove("fade-in");
+                        isElementVisible = false;
+                    }
                 }
             }
 
             window.addEventListener("scroll", handleFade);
-            handleFade(); // Gọi hàm handleFade khi trang được tải lên
+            window.addEventListener("load", handleFade);
         });
     </script>
 
     <script>
         $(document).ready(function() {
             $('.get_started button').click(function() {
+                $('#imageInput').fadeIn(1000);
+                $('.get_started>button').fadeOut(50);
+            });
+            $('.result button').click(function() {
                 $('#imageInput').fadeIn(1000);
                 $('.get_started>button').fadeOut(50);
             });
