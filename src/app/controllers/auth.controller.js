@@ -123,7 +123,7 @@ class AuthController {
           if (err) {
             return next(err);
           }
-          return res.redirect("/home");
+          return res.json({ code: 1, message: "Đăng nhập thành công" })
         });
       })(req, res, next);
   }

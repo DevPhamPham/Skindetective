@@ -35,7 +35,7 @@
 
         /auth/login
     - if Error: return {code: 0, message: "Đăng nhập không thành công"}.
-    - else: redirect("/home").
+    - else: return {code: 1, message: "Đăng nhập thành công"}.
 
 - Register [GET]:
 

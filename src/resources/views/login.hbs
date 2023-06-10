@@ -141,11 +141,14 @@
         method: "POST",
         data: $(this).serialize(),
         success: function(response) {
+            console.log(response);
           if (!response.code) {
             $("#error-alert").text(response.message).fadeIn("fast");
             setTimeout(function() {
               $("#error-alert").text(response.message).fadeOut("slow");
             },5000)
+          }else{
+            window.location.href = "/";
           }
         }
       });
