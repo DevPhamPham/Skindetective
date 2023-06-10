@@ -25,6 +25,7 @@ class UploadController {
     }
 
     const form = new multiparty.Form();
+    // console.log(form)
     let oldPath, newPath;
     form.parse(req, (err, fields, files) => {
       if (err) return res.status(500).send(err.message);

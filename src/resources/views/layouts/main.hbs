@@ -70,41 +70,5 @@
         });
     </script>
 
-    <script>
-        $(document).ready(function() {
-            $('.get_started button').click(function() {
-                $('#imageInput').fadeIn(1000);
-                $('.get_started>button').fadeOut(50);
-            });
-            $('.result button').click(function() {
-                $('#imageInput').fadeIn(1000);
-                $('.get_started>button').fadeOut(50);
-            });
-
-            $('#myImage').change(function() {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#previewImage').attr('src', e.target.result);
-                    $('#previewImage').show();
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-            $("#imageInput").on("submit", function(e) {
-                var fileInput = $("#myImage").get(0); // Lấy phần tử DOM từ đối tượng jQuery
-                if (fileInput.files.length === 0) {
-                    e.preventDefault();
-                    Swal.fire({
-                        title: 'Thất bại',
-                        text: "Vui lòng chọn một ảnh trước khi gửi.",
-                        icon: 'warning',
-                        confirmButtonText: 'Đóng'
-                    })
-                }
-            });
-
-        });
-    </script>
-
 </body>
 </html>

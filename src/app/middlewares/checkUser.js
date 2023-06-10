@@ -1,6 +1,8 @@
 const isAuthenticated = (req, res, next) => {
     if (!req.isAuthenticated()) {
-      return res.redirect("/auth");
+      // res.status(401).json({UnLogin: 1})
+      res.status(401).json({login: 0})
+      return;
     }
     return next();
   };

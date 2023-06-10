@@ -232,7 +232,7 @@
             <div class="component_home py-4 d-flex justify-content-around" style="padding: 0 10%">
               <div class="component_home_child d-flex"><i style="font-size:32px" class="fa-solid fa-code-compare"></i><span style="font-size:14px;font-family: 'Proxima Nova', sans-serif;padding: 0 5%">So sánh tương đồng với các loại bệnh</span></div>
               <div class="component_home_child d-flex"><i style="font-size:32px" class="fa-solid fa-crosshairs"></i><span style="font-size:14px;font-family: 'Proxima Nova', sans-serif;padding: 0 5%">Hỗ trợ chẩn đoán chính xác đến 73.4%</span></div>
-              <div class="component_home_child d-flex"><i style="font-size:32px" class="fa-sharp fa-solid fa-square-poll-horizontal"></i><span style="font-size:14px;font-family: 'Proxima Nova', sans-serif;padding: 0 5%">Đa dạng các loại bệnh về da thường gặp</span></div>
+              <div class="component_home_child d-flex"><i style="font-size:32px" class="fa-sharp fa-square-poll-horizontal"></i><span style="font-size:14px;font-family: 'Proxima Nova', sans-serif;padding: 0 5%">Đa dạng các loại bệnh về da thường gặp</span></div>
             </div>
             <style>
               .get_started button:hover{
@@ -346,6 +346,43 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
 
+{{!-- upload --}}
+    <script>
+        $(document).ready(function() {
+            $('.get_started button').click(function() {
+                $('#imageInput').fadeIn(1000);
+                $('.get_started>button').fadeOut(50);
+            });
+            $('.result button').click(function() {
+                $('#imageInput').fadeIn(1000);
+                $('.get_started>button').fadeOut(50);
+            });
+
+            $('#myImage').change(function() {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#previewImage').attr('src', e.target.result);
+                    $('#previewImage').show();
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            $("#imageInput").on("submit", function(e) {
+                var fileInput = $("#myImage").get(0); // Lấy phần tử DOM từ đối tượng jQuery
+                if (fileInput.files.length === 0) {
+                    e.preventDefault();
+                    Swal.fire({
+                        title: 'Thất bại',
+                        text: "Vui lòng chọn một ảnh trước khi gửi.",
+                        icon: 'warning',
+                        confirmButtonText: 'Đóng'
+                    })
+                }
+            });
+
+        });
+    </script>
+
 {{!-- setup menu --}}
 <script>
 $(function() {
@@ -363,7 +400,7 @@ $(function() {
 
   const menuLinks = document.querySelectorAll('.menu-link');
   const sections = document.querySelectorAll('.section');
-console.log(sections)
+//console.log(sections)
   function activateMenuLink(index) {
     menuLinks.forEach(link => link.classList.remove('active'));
     menuLinks[index].classList.add('active');
@@ -406,7 +443,9 @@ console.log(sections)
         processData: false,
         success: function(response) {
           // Ẩn spinner khi nhận được phản hồi
-          {{!-- console.log(response); --}}
+          {{!-- console.log("response.status");
+          console.log(response.status); --}}
+
           $(".result span").html(`Bệnh <b ">${response.results[0].name}</b> là bệnh được gợi ý là có khả năng xảy ra nhất.`);
           $(".result").find("button").remove();
           let result_recommence = "";
@@ -424,13 +463,17 @@ console.log(sections)
         error: function(err){
           // Ẩn spinner nếu xảy ra lỗi
           spinner.stop();
-          console.log(err);
+          {{!-- console.log("err");
+          console.log(err.status); --}}
+          if (err.status == 401)
+            window.location.href = "/auth/login";
         }
       });
     
     });
   });
 </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/brands.min.js" integrity="sha512-KYlRezs7yAa59UnX6zAvY7I96Te02kycQn02Sr6FU/fBpxcXAwumRe5DHVrqVnWTt9HY/PktrAPZzSe9UE1Yxg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/fontawesome.min.js" integrity="sha512-c41hNYfKMuxafVVmh5X3N/8DiGFFAV/tU2oeNk+upk/dfDAdcbx5FrjFOkFhe4MOLaKlujjkyR4Yn7vImrXjzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -497,7 +540,7 @@ console.log(sections)
   }
 </script>
 
-  
+{{!-- chatbot emb --}}
 <script>
 (function (w, d, s, o, f, js, fjs) {
   w["botsonic_widget"] = o;
