@@ -3,16 +3,12 @@
   "version": "1.0.0",
   "description": "server NCKH",
   "main": "./src/index.js",
-  "scripts2": {
+  "scripts": {
     "start": "concurrently \"npm run start:node\" \"npm run start:python\" && npm run wait-on",
     "start:node": "nodemon --inspect ./src/index.js",
     "start:python": "python ./src/service/servicePython.py",
     "wait-on": "wait-on tcp:localhost:3000 tcp:localhost:5000"
   },
-  "scripts": { 
-    "start": "node ./src/index.js"
-  },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
