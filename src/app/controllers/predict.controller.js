@@ -73,7 +73,7 @@ class PredictController {
         .map((value, index) => [value, index])
         .sort((a, b) => b[0] - a[0])
         .slice(0, 6);
-      let top5Layers = Top5Data.map(data => ({name: dataLayers[data[1]].name, predict: data[0]}))
+      let top5Layers = Top5Data.map(data => ({name: dataLayers[data[1]].name,desp: dataLayers[data[1]].desp, predict: data[0]}))
       // console.log(top5Layers);
       return top5Layers;
     } catch (err) {

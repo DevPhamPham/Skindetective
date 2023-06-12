@@ -70,5 +70,21 @@
         });
     </script>
 
+    {{!-- <script src="./assets/js/snowfall.js"></script> <!-- Đính kèm thư viện Snowfall.js --> --}}
+<script src="./assets/js/snowfall.jquery.js"></script> <!-- Đính kèm thư viện Snowfall.js -->
+
+  <script>
+    $(document).ready(function() {
+      // Khởi tạo hiệu ứng tuyết rơi
+      $('#snowfall').snowfall({
+        //flakeCount: 20, // Số lượng hạt tuyết
+        flakeColor: '#fff', // Màu sắc của hạt tuyết
+        //minSize: 3, // Kích thước nhỏ nhất của hạt tuyết
+        maxSize: 3, // Kích thước lớn nhất của hạt tuyết
+        shadow : true, 
+        round : true
+      });
+    });
+  </script>
 </body>
 </html>

@@ -250,36 +250,87 @@
       </div>
     </div>
 
-    <div class="section2 fade-element" style="height: 100vh">
+    <div class="section2 fade-element" style="min-height: 100vh;position:relative">
       <div class="curved-box"></div>
       <hr style="color:white;opacity:1;margin:0">
-      <div class="wrap-container d-flex flex-wrap align-items-center justify-content-around" style="height: calc(100vh - 126px);">
-        <div class="container h-50 row">
-          <div class="label col-6 text-center d-flex align-items-center">
-            <span style="width:100%; font-size: 38px; font-family:'Space Grotesk', sans-serif;">Kết quả chuẩn đoán cao nhất</span>
+      <div class="wrap-container" style="min-height: calc(100vh - 126px); position:relative; z-index:100">
+        
+        <div class="container h-auto mb-2">
+
+          <div class="label my-5 text-center d-flex align-items-center">
+            <span style="width:auto; font-size: 30px; font-family:'Space Grotesk', sans-serif;">Kết quả chuẩn đoán cao nhất</span>
           </div>
-          <div class="result col-6 text-center d-flex align-items-center">
-            <span style="font-family:'Proxima Nova', sans-serif; font-size:22px; width:100%;">Kiểm tra kết quả ở đây</span>
+
+          <div class="result my-5">
+            <span class="d-flex align-items-center justify-content-center flex-wrap" style="font-family:'Proxima Nova', sans-serif; font-size:22px; ">
+              <div class="mb-2" style="width:100%;">Kiểm tra kết quả ở đây</div>
+              {{!-- <table class="table" style="font-size:90%;font-family:'Proxima Nova', sans-serif;width:50%; border-bottom:none: #ffffff">
+                <tbody>
+                  <tr>
+                    <td style="color:black; font-weight: bold">Tên bệnh</td>
+                  </tr>
+                  <tr>
+                    <td>Thông tin</td>
+                  </tr>
+                </tbody>
+              </table> --}}
+            </span>
             <button class="btn py-2 btn-dark" style="backdrop-filter: blur(2px);border: none"><a href="#" style="font-weight: bold;text-decoration: none;color: #fff;padding: 5px;">Bắt đầu kiểm tra</a></button>
           </div>
+
         </div>
-        <div class="container h-50 row">
-          <div class="label col-6 text-center d-flex align-items-center">
-            <span style="width:100%; font-size: 38px; font-family:'Space Grotesk', sans-serif;">Gợi ý 5 bệnh liên quan<br>(từ cao đến thấp)</span>
+
+        <div class="container h-auto my-2">
+          <div class="label ">
+            <span style="width:100%; font-size: 30px; font-family:'Space Grotesk', sans-serif;">Gợi ý 5 bệnh liên quan<br>(từ cao đến thấp)</span>
           </div>
-          <div class="result_recommence col-6 text-center d-flex flex-wrap align-items-center">
-            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 1</span>
-            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 2</span>
-            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 3</span>
-            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 4</span>
-            <span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh 5</span>
+
+          <div class="result_recommence d-flex flex-wrap justify-content-around">
+          <div class="card">
+              <span style="font-size: 110%;font-weight:bold">Bệnh 1</span>
+              <div style="font-size: 18px">Mô tả 1</div>
+            </div>
+            <div class="card">
+              <span class="" style="font-size: 110%;font-weight:bold">Bệnh 2</span>
+              <div style="font-size: 18px">Mô tả 2</div>
+            </div>
+            <div class="card">
+              <span class="" style="font-size: 110%;font-weight:bold">Bệnh 3</span>
+              <div style="font-size: 18px">Mô tả 3</div>
+            </div>
+            <div class="card">
+              <span class="" style="font-size: 110%;font-weight:bold">Bệnh 4</span>
+              <div style="font-size: 18px">Mô tả 4</div>
+            </div>
+            <div class="card">
+              <span class="" style="font-size: 110%;font-weight:bold">Bệnh 5</span>
+              <div style="font-size: 18px">Mô tả 5</div>
+            </div>
           </div>
+          <style>
+            .card {
+              display: inline-block;
+              width: 65%;
+              height: auto;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              margin: 10px;
+              padding: 10px;
+              text-align: left;
+              font-family: 'Proxima Nova', sans-serif;
+              font-size: 20px;
+              background-color: transparent;
+            }
+          </style>
+
         </div>
       </div>
       <style>
         .section2{
-          background: linear-gradient(to bottom right, #445cbb, #42abf0);
-          color: #ffffff;
+          color: #000000;
+          background-image: url('./assets/images/home/background_predict2.png');
+          background-size: cover;
+          background-position: center;
         }
         .curved-box {
           width: 100%;
@@ -292,6 +343,22 @@
         }
         .result button:hover a{
           color: #000 !important;
+        }
+
+      </style>
+
+      <div class="wrap_nowball" style="position: absolute; top:0;left:0;height:100%;width:100%">
+
+        <div id="snowfall"></div>
+      </div>
+      <style>
+        #snowfall {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
         }
       </style>
     </div>
@@ -316,7 +383,6 @@
         </div>
       </div>
     </div>
-
     <style>
       .loader {
         border: 4px solid #f3f3f3;
@@ -335,8 +401,8 @@
       }
     </style>
 
-
   </div>
+
 </div>
 
 <div id="progress" style="display:none; background-color: #8585855d;position: fixed; top: 0; left: 0; right: 0;bottom:0;z-index: 9999999999;">
@@ -446,11 +512,24 @@ $(function() {
           {{!-- console.log("response.status");
           console.log(response.status); --}}
 
-          $(".result span").html(`Bệnh <b ">${response.results[0].name}</b> là bệnh được gợi ý là có khả năng xảy ra nhất.`);
+          $(".result").html(`
+            <span class="d-flex align-items-center justify-content-center flex-wrap" style="font-family:'Proxima Nova', sans-serif; font-size:24px; ">
+            
+            </span>
+              <div class="py-2" style="backdrop-filter: blur(2px);border: none;font-size:18px">${response.results[0].desp}</div>
+          `)
+          $(".result span").html(`
+              <div class="mb-2" style="width:100%;font-weitght:bold">${response.results[0].name}</div>
+          `);
           $(".result").find("button").remove();
           let result_recommence = "";
           for (let i = 1; i < response.results.length; i++) {
-            result_recommence += `<span style="font-family:'Proxima Nova', sans-serif; font-size:20px; width:100%;">Bệnh <b ">${response.results[i].name}</b></span>`
+            result_recommence += `
+            <div class="card">
+              <span class="" style="font-size: 110%;font-weight:bold">${response.results[i].name}</span>
+              <div style="font-size: 18px">${response.results[i].desp}</div>
+            </div>
+            `
           }
           $(".result_recommence").html(result_recommence);
 
