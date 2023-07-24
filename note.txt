@@ -1,0 +1,7 @@
+https://techmaster.vn/posts/33629/tao-mot-restful-webservice-don-gian-voi-express-nodejs
+
+đăng nhập, đăng ký, lấy dữ liệu, post hình 
+
+đăng ký chỉ cần: họ tên, birthday, gender, email, sdt
+
+lấy luôn thông tin user

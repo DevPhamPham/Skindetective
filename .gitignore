@@ -1,0 +1,4 @@
+node_modules
+public/DataModel/*
+public/DataModel/mobilenet
+public/images/SaveImageFromUser
